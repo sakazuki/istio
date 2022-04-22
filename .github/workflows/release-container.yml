@@ -38,7 +38,8 @@
 
       - name: Docker Build
         run: |
-          make 
+          make build
+          make push
 
       - name: Build and push
         uses: docker/build-push-action@v2
