@@ -31,9 +31,10 @@
       - name: Build
         run: |
           export TARGET_ARCH=arm64
-          export IMG=docker.io/kubeedge/build-tools:latest
           make init
-          make build docker.push
+          make build
+          ls /home/runner/work/istio/istio/out -l
+          make docker.push
       
       # - name: Build and push
       #   uses: docker/bake-action@master
