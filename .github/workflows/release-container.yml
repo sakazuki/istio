@@ -14,23 +14,23 @@
         matrix:
           include:
             - image: proxyv2
-              context: pilot/docker/Dockerfile.proxyv2
-              dockerfile: pilot/docker/Dockerfile.proxyv2
+              context: ./pilot/docker/Dockerfile.proxyv2
+              dockerfile: ./pilot/docker/Dockerfile.proxyv2
             - image: pilot
-              context: pilot/docker
-              dockerfile: pilot/docker/Dockerfile.pilot
+              context: ./pilot/docker
+              dockerfile: ./pilot/docker/Dockerfile.pilot
             - image: istioctl
-              context: istioctl/docker
-              dockerfile: istioctl/docker/Dockerfile.istioctl
+              context: ./istioctl/docker
+              dockerfile: ./istioctl/docker/Dockerfile.istioctl
             - image: operator
-              context: operator/docker
-              dockerfile: operator/docker/Dockerfile.operator
+              context: ./operator/docker
+              dockerfile: ./operator/docker/Dockerfile.operator
             - image: install-cni
-              context: cni/deployments/kubernetes
-              dockerfile: cni/deployments/kubernetes/Dockerfile.install-cni
+              context: ./cni/deployments/kubernetes
+              dockerfile: ./cni/deployments/kubernetes/Dockerfile.install-cni
             - image: ext-authz
-              context: samples/extauthz/docker
-              dockerfile: samples/extauthz/docker/Dockerfile
+              context: ./samples/extauthz/docker
+              dockerfile: ./samples/extauthz/docker/Dockerfile
 
       steps:
       - name: Checkout
