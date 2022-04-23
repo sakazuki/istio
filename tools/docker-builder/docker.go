@@ -115,7 +115,7 @@ func RunBake(args Args) error {
 	if err := createBuildxBuilderIfNeeded(args); err != nil {
 		return err
 	}
-	c := VerboseCommand("docker", "buildx", "bake", "-f", out, "all", "--set", "*.args.TARGETARCH=arm64")
+	c := VerboseCommand("docker", "buildx", "bake", "-f", out, "all", "--set", "target.platform=linux/arm64")
 	c.Stdout = os.Stdout
 	return c.Run()
 }
