@@ -59,7 +59,7 @@
 
       - name: Build
         run: |
-          TARGET_ARCH=arm64
+          export TARGET_ARCH=arm64
           make build-linux
 
       - name: Build and push
