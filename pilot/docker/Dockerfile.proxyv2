@@ -12,7 +12,7 @@ FROM gcr.io/istio-release/base:${BASE_VERSION} as debug
 # It is built on the base distroless image, with iptables binary and libraries added
 # The source can be found at https://github.com/istio/distroless/tree/iptables
 # This version is from commit 6faf2f9348d382c6a95bbc3171b89406103cb0ad.
-FROM gcr.io/istio-release/iptables@sha256:64ba191166d2c3f87815148cc1a9f530b770e0dfe81acb164ab79cbb31da582c as distroless
+FROM gcr.io/istio-release/iptables@sha256:d7fd7a16a94f6635c5e0442178335f769ff8803173e28d535ff83c8dfe0add73 as distroless
 
 # This will build the final image based on either debug or distroless from above
 # hadolint ignore=DL3006
@@ -30,7 +30,7 @@ COPY gcp_envoy_bootstrap.json /var/lib/istio/envoy/gcp_envoy_bootstrap_tmpl.json
 
 # Install Envoy.
 ARG TARGETARCH
-COPY linux_${TARGETARCH:-amd64}/${SIDECAR} /usr/local/bin/${SIDECAR}
+COPY ${TARGETARCH:-amd64}/${SIDECAR} /usr/local/bin/${SIDECAR}
 
 # Environment variable indicating the exact proxy sha - for debugging or version-specific configs
 ENV ISTIO_META_ISTIO_PROXY_SHA $proxy_version
@@ -38,7 +38,7 @@ ENV ISTIO_META_ISTIO_PROXY_SHA $proxy_version
 ENV ISTIO_META_ISTIO_VERSION $istio_version
 
 ARG TARGETARCH
-COPY linux_${TARGETARCH:-amd64}/pilot-agent /usr/local/bin/pilot-agent
+COPY ${TARGETARCH:-amd64}/pilot-agent /usr/local/bin/pilot-agent
 
 COPY stats-filter.wasm /etc/istio/extensions/stats-filter.wasm
 COPY stats-filter.compiled.wasm /etc/istio/extensions/stats-filter.compiled.wasm
