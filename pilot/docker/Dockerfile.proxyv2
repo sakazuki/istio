@@ -30,6 +30,7 @@ COPY gcp_envoy_bootstrap.json /var/lib/istio/envoy/gcp_envoy_bootstrap_tmpl.json
 
 # Install Envoy.
 ARG TARGETARCH
+RUN find . -type f
 COPY ${TARGETARCH:-amd64}/${SIDECAR} /usr/local/bin/${SIDECAR}
 
 # Environment variable indicating the exact proxy sha - for debugging or version-specific configs
