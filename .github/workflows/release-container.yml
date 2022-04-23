@@ -32,7 +32,8 @@
         run: |
           export TARGET_ARCH=arm64
           make init
-          find /work -type f
+          pwd
+          find . -type f
           make build docker.push
       
       # - name: Build and push
