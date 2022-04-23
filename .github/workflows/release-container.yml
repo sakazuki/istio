@@ -33,7 +33,7 @@
           export TARGET_ARCH=arm64
           make init
           pwd
-          ls -l /home/runner/work/istio/
+          find /home/runner/work -type d -maxdepth 2
           make build docker.push
       
       # - name: Build and push
