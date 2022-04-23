@@ -60,8 +60,7 @@
       - name: Build
         run: |
           export TARGET_ARCH=arm64
-          export TARGETARCH=linux_arm64
-          make init build-linux docker.push
+          make init build docker.push
       
       # - name: Build and push
       #   uses: docker/bake-action@master
