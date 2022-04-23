@@ -31,9 +31,8 @@
       - name: Build
         run: |
           export TARGET_ARCH=arm64
+          export IMG=docker.io/kubeedge/build-tools:latest
           make init
-          pwd
-          find /home/runner/work -type d -maxdepth 2
           make build docker.push
       
       # - name: Build and push
