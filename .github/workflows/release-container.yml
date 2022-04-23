@@ -30,6 +30,7 @@
 
       - name: Build
         run: |
+          export IMG=docker.io/kubeedge/build-tools:latest
           export TARGET_ARCH=arm64
           make init
           make build
